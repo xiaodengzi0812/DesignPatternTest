@@ -1,0 +1,29 @@
+策略模式:  
+
+	定义一系列算法，把他们独立封装起来，并且这些算法之间可以相互替换。策略
+
+模式主要是管理一堆有共性的算法，
+	客户端可以根据需要，很快切换这些算法，并且保持可扩展性。
+	
+	策略模式的本质：分离算法，选择实现。
+	
+	在本例子中:
+		我定义了一个PriceStrategy()  -->   算法的总接口
+		然后又创建了三个实现类FivePercentStrategy、SixPercentStrategy、
+
+SevenPercentStrategy  -->  分别代表三种不同的算法实现
+		再定义一个DstPrice  -->   算法的管理工具，主要用来切换算法，管
+
+理工具里面也是针对接口编程，具体算法实现被封装了
+		
+		在使用的时候Test类中：
+		public void test1() {
+			DstPrice dstPrice = new DstPrice();
+			dstPrice.setPriceMode(new FivePercentStrategy());
+			int exeCalPrice = dstPrice.ExeCalPrice(200);
+			Log.e(this.getClass().getSimpleName(), "200元的商品打折之后为-->"+exeCalPrice+"元");
+		}
+		
+		利用 dstPrice.setPriceMode(new FivePercentStrategy());  就可以
+
+设置不同的算法，以实现算法之间的相互替换

@@ -1,0 +1,40 @@
+创建者模式:
+
+	将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。
+
+    二 适用性
+
+    在以下情况使用Build模式：
+
+    1 当创建复杂对象的算法应该独立于该对象的组成部分以及它们的装配方式时。
+
+    2 当构造过程必须允许被构造的对象有不同的表示时。
+
+    3 Builder模式要解决的也正是这样的问题：
+
+    　　当我们要创建的对象很复杂的时候（通常是由很多其他的对象组合而成），
+
+    　　我们要复杂对象的创建过程和这个对象的表示（展示）分离开来，
+
+    　　这样做的好处就是通过一步步的进行复杂对象的构建，
+
+    　　由于在每一步的构造过程中可以引入参数，使得经过相同的步骤创建最后得到的对象的展示不一样。
+
+
+    系统的AlertDialog就是一个非常典型的builder模式，本例中我也是模仿了一个自己的AlertDialog，使用方式跟系统的一模一样
+
+            /**
+             * 系统的AlertDialog使用
+             */
+            public void test1(View view) {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+                dialog.setTitle("title").setCancelable(true).setMessage("msg").create().show();
+            }
+
+            /**
+             * 自己的AlertDialog使用
+             */
+            public void test2(View view) {
+                MyAlertDialog.Builder dialog = new MyAlertDialog.Builder(this);
+                dialog.setTitle("title").setCancelable(true).setMessage("msg").creat().show();
+            }
