@@ -1,33 +1,35 @@
-/**
- 结构是简单的，但是却存在以下情况；
-1.每次从getInstance()都能返回一个且唯一的一个对象。
-2.资源共享情况下，getBanZhengWindow()必须适应多线程并发访问。
-3.提高访问性能。
-4.懒加载（Lazy Load），在需要的时候才被构造。
- */
 package com.stage.designpatterntest.singleton;
 
 /**
  * @author dengzi
- * @Date 2014-12-4 下午5:01:10 
+ * @Date 2014-12-4 下午5:01:10
  * @Version V1.0
- * @Description 单例模式改进2
- 
-  比起单例1仅仅在方法中多了一个synchronized修饰符，现在可以保证不会出线程问题了。但是这里有个很大（至少耗时比例上很大）的性能问题。
-  除了第一次调用时是执行了SingletonKerriganB的构造函数之外，以后的每一次调用都是直接返回instance对象。
-  返回对象这个操作耗时是很小的，绝大部分的耗时都用在synchronized修饰符的同步准备上，因此从性能上说很不划算。
-   
+ * @Description 懒汉式DCL(比较常用)
+ * volatile 关键字：
+ * 1 防止重排序
+ * 2 线程可见性 - 某一个线程改了公用对象（变量），短时间内另一个线程可能是不可见的，因为每一个线程都有自己的缓存区（线程工作区）
  * @Change
  */
 public class Single2 {
-	private static Single2 instance = null;
-	
-	public synchronized static  Single2 getInstance(){
-		if(instance == null){
-			instance = new Single2();
-		}
-		return instance;
-	}
+    // 加上volatile关键字
+    private static volatile Single2 mInstance = null;
+
+    // 构造私有
+    private Single2() {
+    }
+
+    // 双判断检测
+    public static Single2 getInstance() {
+        if (mInstance == null) {
+            synchronized (Single2.class) {
+                // 必须要有下面这个判断，如果没这个判断就跟没有锁是一个效果
+                if (mInstance == null) {
+                    mInstance = new Single2();
+                }
+            }
+        }
+        return mInstance;
+    }
 }
 
     
