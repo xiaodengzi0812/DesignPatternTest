@@ -1,4 +1,4 @@
-package com.stage.designpatterntest.factory.base;
+package com.stage.designpatterntest.factory.banzhengdemo.base;
 
 /**
  * @author Djk

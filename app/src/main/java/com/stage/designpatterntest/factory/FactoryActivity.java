@@ -7,11 +7,11 @@ import android.widget.TextView;
 import com.stage.designpatterntest.BaseActivity;
 import com.stage.designpatterntest.IntroduceUtil;
 import com.stage.designpatterntest.R;
-import com.stage.designpatterntest.factory.base.BanZhengFactory;
-import com.stage.designpatterntest.factory.base.BanZhengWindows;
-import com.stage.designpatterntest.factory.impl.DiaoSiZheng;
-import com.stage.designpatterntest.factory.impl.NaoCanZheng;
-import com.stage.designpatterntest.factory.impl.SBZheng;
+import com.stage.designpatterntest.factory.banzhengdemo.base.BanZhengFactory;
+import com.stage.designpatterntest.factory.banzhengdemo.base.BanZhengWindows;
+import com.stage.designpatterntest.factory.banzhengdemo.impl.DiaoSiZheng;
+import com.stage.designpatterntest.factory.banzhengdemo.impl.NaoCanZheng;
+import com.stage.designpatterntest.factory.banzhengdemo.impl.SBZheng;
 
 public class FactoryActivity extends BaseActivity {
 

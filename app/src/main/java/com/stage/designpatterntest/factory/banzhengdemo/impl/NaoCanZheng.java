@@ -1,6 +1,6 @@
-package com.stage.designpatterntest.factory.impl;
+package com.stage.designpatterntest.factory.banzhengdemo.impl;
 
-import com.stage.designpatterntest.factory.base.BanZhengWindows;
+import com.stage.designpatterntest.factory.banzhengdemo.base.BanZhengWindows;
 
 /**
  * @author Djk
